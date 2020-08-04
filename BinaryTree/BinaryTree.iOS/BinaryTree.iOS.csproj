@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0FB2BD96-01C2-4C9E-8142-08B0F6EE94A6}</ProjectGuid>
+    <ProjectGuid>{12E0255B-D47D-4080-A6F6-55DE6F0EC7BD}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
     <OutputType>Exe</OutputType>
@@ -129,7 +129,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\BinaryTree\BinaryTree.csproj">
-      <Project>{5369E1DB-0F51-4829-9E4F-13A32E18E7FC}</Project>
+      <Project>{3B36DAAF-A3F4-491E-BBB1-D1BA2D297CEC}</Project>
       <Name>BinaryTree</Name>
     </ProjectReference>
   </ItemGroup>

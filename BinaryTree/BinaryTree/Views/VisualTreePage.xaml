@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BindingContext="{Binding Main, Source={StaticResource Locator}}"
+    x:Class="BinaryTree.Views.VisualTreePage"
+    Title="Tree">
+    <ContentPage.Content>
+        <StackLayout
+            BackgroundColor="White"
+            BindingContext="{Binding VisualTree}">
+
+            <Button
+                Margin="100,0"
+                Text="{Binding FatherNodeText, Mode=TwoWay}">
+
+            </Button>
+
+            <StackLayout
+                HorizontalOptions="Center"
+                Orientation="Horizontal">
+
+                <Button
+                    IsVisible="{Binding IsVisibleLeft, Mode=TwoWay}"
+                    Text="{Binding LeftNodeText, Mode=TwoWay}"
+                    Command="{Binding LeftNodeCommand, Mode=TwoWay}">
+
+                </Button>
+
+                <Button
+                    IsVisible="{Binding IsVisibleRight, Mode=TwoWay}"
+                    Text="{Binding RightNodeText, Mode=TwoWay}"
+                    Command="{Binding RightNodeCommand, Mode=TwoWay}">
+
+                </Button>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

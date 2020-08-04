@@ -1,4 +1,5 @@
 ﻿using System;
+using BinaryTree.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace BinaryTree
         {
             InitializeComponent();
 
-            MainPage =new NavigationPage(new BinaryTree.Views.CreateTreePage());
+            MainPage = new NavigationPage(new CreateTreePage());
         }
 
         protected override void OnStart()

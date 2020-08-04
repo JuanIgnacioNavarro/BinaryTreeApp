@@ -1,94 +1,119 @@
-﻿
-using BinaryTree.Models;
-using CookTime.ViewModels;
-using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Helpers;
-using System;
-using System.Collections.ObjectModel;
-using System.Linq;
+﻿using System;
 using System.Windows.Input;
+using BinaryTree.Models;
+using BinaryTree.Views;
+using GalaSoft.MvvmLight.Command;
 using Xamarin.Forms;
 
 namespace BinaryTree.ViewModels
 {
     public class CreateTreeViewModel: BaseViewModel
     {
+
         #region ATTRIBUTES
-        private ObservableCollection<Number> items;
 
-        private BinarySearchTree binaryTree;
+        Node root;
 
-        private int amount;
+        private string numberText;
+
         #endregion
+
 
         #region PROPERTIES
-        public ObservableCollection<Number> Items 
+
+        //TEXT
+        public string NumberText
         {
-            get { return this.items; }
-            set { SetValue(ref this.items, value); }
+            get { return this.numberText; }
+            set { SetValue(ref this.numberText, value); }
         }
 
-        public int Amount
+        //COMMAND
+        public ICommand VisualTreeCommand
         {
-            get { return this.amount; }
-            set { SetValue(ref this.amount, value); }
+            get { return new RelayCommand(VisualTree); }
         }
 
-        public ICommand IncreaseEntriesCommand 
+        //COMMAND
+        public ICommand AddNodeCommand
         {
-            get { return new RelayCommand(IncreaseEntries); }
+            get { return new RelayCommand(AddNode); }
         }
 
-        public ICommand DecreaseEntriesCommand
-        {
-            get { return new RelayCommand(DecreaseEntries); }
-        }
 
-        public ICommand NewTreeCommand
-        {
-            get { return new RelayCommand(NewTree); }
-        }
         #endregion
 
-        #region CONSTRUCTOR
-        public CreateTreeViewModel()
-        {
-            this.Items = new ObservableCollection<Number>()
-            {
-                new Number{ Value= "21" },
-                new Number {Value = "20"}
-            };
-            //this.Items.Add(new Number { Value = 31 });
-            
-        }
-        #endregion
 
         #region METHODS
 
-        private void IncreaseEntries()
+        private async void VisualTree()
         {
-            this.Items.Add(null);
-        }
-
-        private void DecreaseEntries()
-        {
-            var index = this.Items.Count() - 1;
-            this.Items.RemoveAt(index);
-        }
-
-        private void NewTree()
-        {
-            this.binaryTree = new BinarySearchTree();
-
-            foreach (Number number in Items)
+            if (this.root != null)
             {
-                var numberInt = Convert.ToInt32 (number.Value);
-                this.binaryTree.Insert(numberInt);
-
+                MainViewModel.getInstance().VisualTree = new VisualTreeViewModel(this.root);
+                await Application.Current.MainPage.Navigation.PushAsync(new VisualTreePage());
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "There are no elements in the tree", "Ok");
             }
 
-            this.binaryTree.Insert(12);
         }
+
+        private async void AddNode()
+        {
+            int nodeValue;
+
+            try
+            {
+                nodeValue = int.Parse(this.NumberText);
+            }
+            catch (Exception)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "You must enter a valid number", "Ok");
+                return;
+            }
+
+            if (this.root == null)
+            {
+                this.root = new Node(nodeValue);
+            }
+            else
+            {
+                Node father = this.root;
+
+                while (nodeValue != father.Value)
+                {
+                    if (nodeValue < father.Value)
+                    {
+                        if (father.Left == null)
+                        {
+                            father.Left = new Node(nodeValue);
+                            break;
+                        }
+                        else
+                        {
+                            father = father.Left;
+                        }
+                    }
+                    else
+                    {
+                        if (father.Right == null)
+                        {
+                            father.Right = new Node(nodeValue);
+                            break;
+                        }
+                        else
+                        {
+                            father = father.Right;
+                        }
+                    }
+                }
+            }
+
+            this.NumberText = string.Empty;
+        }
+
         #endregion
     }
 }

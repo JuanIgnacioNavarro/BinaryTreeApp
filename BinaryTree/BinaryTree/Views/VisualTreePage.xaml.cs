@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace BinaryTree.Views
 {
-    public partial class CreateTreePage : ContentPage
+    public partial class VisualTreePage : ContentPage
     {
-        public CreateTreePage()
+        public VisualTreePage()
         {
             InitializeComponent();
         }

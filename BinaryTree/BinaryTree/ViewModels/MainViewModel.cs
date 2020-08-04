@@ -1,22 +1,33 @@
-﻿using BinaryTree.Views;
-
+﻿using System;
 namespace BinaryTree.ViewModels
 {
     public class MainViewModel
     {
-        #region PROPERTIES
-        public CreateTreeViewModel CreateTree
-        {
-            get;
-            set; 
-        }
+        #region ATTRIBUTES
+
+        private static MainViewModel instance;
+
         #endregion
 
-        #region CONSTRUCTOR
+
+        #region VIEWMODELS
+        public CreateTreeViewModel CreateTree { get; set; }
+
+        public VisualTreeViewModel VisualTree { get; set; }
+
+        #endregion
+
+
         public MainViewModel()
         {
+            instance = this;
             this.CreateTree = new CreateTreeViewModel();
         }
-        #endregion
+
+        //SINGLETON (instance is never null)
+        public static MainViewModel getInstance()
+        {
+            return instance;
+        }
     }
 }

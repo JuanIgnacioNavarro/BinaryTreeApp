@@ -1,90 +1,63 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage 
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
     x:Class="BinaryTree.Views.CreateTreePage"
-    BindingContext="{Binding Main, Source={StaticResource Locator}}">
-    
+    BindingContext="{Binding Main, Source={StaticResource Locator}}"
+    Title="Tree Creation">
     <ContentPage.Content>
-        
         <StackLayout
-            BindingContext="{Binding CreateTree}"
-            Padding="5">
+            BackgroundColor="White"
+            Padding="0,100,0,0"
+            BindingContext="{Binding CreateTree}">
+
+            <Frame
+                CornerRadius="150" 
+                HorizontalOptions="Center"
+                WidthRequest="200"
+                HeightRequest="200"
+                IsClippedToBounds="True"
+                Padding="0">
+
+                <Frame.GestureRecognizers>
+
+                    <TapGestureRecognizer
+
+                        Command="{Binding VisualTreeCommand, Mode=TwoWay}">
+
+                    </TapGestureRecognizer>
+
+                </Frame.GestureRecognizers>
+
+                <Image
+                    Source="BinaryTree"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Aspect="AspectFill">
+                </Image>
+
+            </Frame>
 
             <StackLayout
-                    Orientation="Horizontal"
-                    Margin="5,0">
+                VerticalOptions="EndAndExpand"
+                Padding="10">
+                <Entry
+                    Placeholder="Number"
+                    Keyboard="Numeric"
+                    Text="{Binding NumberText, Mode=TwoWay}">
 
-                <Label
-                    Text="Tree Elements:"
-                    FontSize="Body"
-                    TextColor="#B09B35"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Start">
-
-                </Label>
-
-                <Label
-                    FontSize="Body"
-                    TextColor="Black"
-                    VerticalOptions="Center"
-                    HorizontalOptions="StartAndExpand"
-                    Text="{Binding Amount, Mode=TwoWay}">
-
-                </Label>
+                </Entry>
 
                 <Button
-                    Text="-"
-                    VerticalOptions="Center"
-                    Command="{Binding DecreaseEntriesCommand}">
-                </Button>
+                    Text="Add"
+                    Command="{Binding AddNodeCommand, Mode=TwoWay}">
 
-                <Button
-                    Text="+"
-                    VerticalOptions="Center"
-                    Command="{Binding IncreaseEntriesCommand}">
-                    
                 </Button>
-
             </StackLayout>
 
-            <ListView
-                HasUnevenRows="True"
-                IsPullToRefreshEnabled="True"
-                IsRefreshing="{Binding IsRefreshing}"
-                RefreshCommand="{Binding RefreshCommand}"
-                ItemsSource="{Binding Items}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
 
-                            <!--The cell visual representation is defined in this frame, it  contains the picture, name of the recipe
-                            name of the author, picture of the author and amount of likes-->
-                            <Entry
-                                Placeholder="{Binding Value}"
-                                FontSize="Body"
-                                PlaceholderColor="#B09B35"
-                                Keyboard="Numeric"
-                                Text="{Binding Value, Mode=TwoWay}"
-                                BackgroundColor="white">
-                            </Entry>
 
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
-            <Button
-                Text="Create Tree"
-                BackgroundColor="Red"
-                Command="{Binding NewTreeCommand}">
-            </Button>
-            
         </StackLayout>
-        
+
     </ContentPage.Content>
-    
 </ContentPage>

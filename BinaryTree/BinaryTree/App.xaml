@@ -1,25 +1,25 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Application 
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:infra="clr-namespace:BinaryTree.Infrastructure"
     mc:Ignorable="d"
-    xmlns:infra="clr-namespace:BinaryTree.Infraestructure"
     x:Class="BinaryTree.App">
+
     <Application.Resources>
-
         <ResourceDictionary>
-            <infra:InstanceLocator x:Key="Locator"/>
-        </ResourceDictionary>
 
-        <Style
+            <infra:InstanceLocator x:Key="Locator"/>
+
+            <Style
                 ApplyToDerivedTypes="True"
                 TargetType="NavigationPage">
-            <Setter Property="BarBackgroundColor" Value="White"/>
-            <Setter Property="BarTextColor" Value="Black"/>
+                <Setter Property="BarBackgroundColor" Value="White"/>
+                <Setter Property="BarTextColor" Value="Black"/>
 
-        </Style>
-
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
