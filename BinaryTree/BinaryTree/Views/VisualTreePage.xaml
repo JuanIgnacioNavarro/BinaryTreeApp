@@ -10,30 +10,133 @@
             BackgroundColor="White"
             BindingContext="{Binding VisualTree}">
 
-            <Button
-                Margin="100,0"
-                Text="{Binding FatherNodeText, Mode=TwoWay}">
+            <Grid
+                VerticalOptions="CenterAndExpand">
+                <Grid.ColumnDefinitions>
 
-            </Button>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
 
-            <StackLayout
-                HorizontalOptions="Center"
-                Orientation="Horizontal">
+                </Grid.ColumnDefinitions>
 
-                <Button
-                    IsVisible="{Binding IsVisibleLeft, Mode=TwoWay}"
-                    Text="{Binding LeftNodeText, Mode=TwoWay}"
-                    Command="{Binding LeftNodeCommand, Mode=TwoWay}">
+                <Grid.RowDefinitions>
 
-                </Button>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
 
-                <Button
-                    IsVisible="{Binding IsVisibleRight, Mode=TwoWay}"
-                    Text="{Binding RightNodeText, Mode=TwoWay}"
-                    Command="{Binding RightNodeCommand, Mode=TwoWay}">
 
-                </Button>
-            </StackLayout>
+                </Grid.RowDefinitions>
+
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    BackgroundColor="LightGray"
+                    CornerRadius="150" 
+                    HorizontalOptions="Center"
+                    WidthRequest="100"
+                    HeightRequest="100"
+                    IsClippedToBounds="True"
+                    Padding="0">
+
+                    <Label
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        TextColor="Black"
+                        Text="{Binding FatherNodeText, Mode=TwoWay}">
+
+                    </Label>
+
+                </Frame>
+
+                <Image
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    HorizontalOptions="End"
+                    HeightRequest="100"
+                    Source="LeftArrow"
+                    IsVisible="{Binding IsVisibleLeft, Mode=TwoWay}">
+
+                </Image>
+
+                <Image
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    HorizontalOptions="Start"
+                    HeightRequest="100"
+                    Source="RightArrow"
+                    IsVisible="{Binding IsVisibleRight, Mode=TwoWay}">
+
+                </Image>
+
+                <Frame
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    BackgroundColor="LightGray"
+                    CornerRadius="150" 
+                    HorizontalOptions="Center"
+                    WidthRequest="100"
+                    HeightRequest="100"
+                    IsClippedToBounds="True"
+                    Padding="0"
+                    IsVisible="{Binding IsVisibleLeft, Mode=TwoWay}">
+
+                    <Frame.GestureRecognizers>
+
+                        <TapGestureRecognizer
+
+                            Command="{Binding LeftNodeCommand, Mode=TwoWay}">
+
+                        </TapGestureRecognizer>
+
+                    </Frame.GestureRecognizers>
+
+                    <Label
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        TextColor="Black"
+                        Text="{Binding LeftNodeText, Mode=TwoWay}">
+
+                    </Label>
+
+                </Frame>
+
+                <Frame
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    BackgroundColor="LightGray"
+                    CornerRadius="150" 
+                    HorizontalOptions="Center"
+                    WidthRequest="100"
+                    HeightRequest="100"
+                    IsClippedToBounds="True"
+                    Padding="0"
+                    IsVisible="{Binding IsVisibleRight, Mode=TwoWay}">
+
+                    <Frame.GestureRecognizers>
+
+                        <TapGestureRecognizer
+
+                            Command="{Binding RightNodeCommand, Mode=TwoWay}">
+
+                        </TapGestureRecognizer>
+
+                    </Frame.GestureRecognizers>
+
+                    <Label
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        TextColor="Black"
+                        Text="{Binding RightNodeText, Mode=TwoWay}">
+
+                    </Label>
+
+                </Frame>
+
+            </Grid>
+
+
 
         </StackLayout>
     </ContentPage.Content>
