@@ -7,7 +7,7 @@
     Title="Tree Creation">
     <ContentPage.Content>
         <StackLayout
-            BackgroundColor="White"
+            BackgroundColor="#000000"
             Padding="0,100,0,0"
             BindingContext="{Binding CreateTree}">
 
@@ -40,19 +40,32 @@
 
             <StackLayout
                 VerticalOptions="EndAndExpand"
-                Padding="10">
+                Padding="20">
+
                 <Entry
+                    Margin="80, 0"
+                    WidthRequest="70"
+                    HeightRequest="50"
                     Placeholder="Number"
+                    BackgroundColor="#393748"
+                    TextColor="#FFFFFF"
+                    HorizontalTextAlignment="Center"
+                    FontSize="Large"
                     Keyboard="Numeric"
                     Text="{Binding NumberText, Mode=TwoWay}">
-
                 </Entry>
-
+           
                 <Button
+                    CornerRadius="15"
+                    HeightRequest="50"
+                    Margin="50, 0"
+                    BackgroundColor="#0F084D"
                     Text="Add"
+                    TextColor="#FFFFFF"
+                    FontSize="Large"
                     Command="{Binding AddNodeCommand, Mode=TwoWay}">
-
                 </Button>
+
             </StackLayout>
 
         </StackLayout>

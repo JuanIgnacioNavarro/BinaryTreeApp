@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using BinaryTree.Models;
 using BinaryTree.Views;
 using GalaSoft.MvvmLight.Command;
@@ -28,10 +27,16 @@ namespace BinaryTree.ViewModels
 
         private string postOrderText;
 
+        private string depthText1;
+
+        private string depthText2;
+
         //BOOLEAN
         private bool isVisibleLeft;
 
         private bool isVisibleRight;
+
+        private bool hasChilren;
         #endregion
 
 
@@ -74,6 +79,19 @@ namespace BinaryTree.ViewModels
             set { SetValue(ref this.postOrderText, value); }
         }
 
+        public string DepthText1 
+        {
+            get { return this.depthText1; }
+            set { SetValue(ref this.depthText1, value); }
+        }
+
+        public string DepthText2
+        {
+            get { return this.depthText2; }
+            set { SetValue(ref this.depthText2, value); }
+        }
+
+
         //BOOLEAN
         public bool IsVisibleLeft
         {
@@ -85,6 +103,12 @@ namespace BinaryTree.ViewModels
         {
             get { return this.isVisibleRight; }
             set { SetValue(ref this.isVisibleRight, value); }
+        }
+
+        public bool HasChildren
+        {
+            get { return this.hasChilren; }
+            set { SetValue(ref this.hasChilren, value); }
         }
 
         //COMMAND
@@ -101,8 +125,10 @@ namespace BinaryTree.ViewModels
 
         #endregion
 
-        public VisualTreeViewModel(Node father)
+        public VisualTreeViewModel(Node father, int depth)
         {
+            this.DepthText1 = depth.ToString();
+            this.DepthText2 = (depth + 1).ToString();
             this.father = father;
 
             this.FatherNodeText = this.father.Value.ToString();
@@ -118,6 +144,11 @@ namespace BinaryTree.ViewModels
                 this.RightNodeText = this.father.Right.Value.ToString();
                 this.IsVisibleRight = true;
             }
+
+            if (this.IsVisibleRight || this.IsVisibleRight)
+            {
+                this.HasChildren = true;
+            }
             
             this.PrintInOrder(CreateTreeViewModel.rootStatic);
             this.PrintPreOrder(CreateTreeViewModel.rootStatic);
@@ -128,13 +159,15 @@ namespace BinaryTree.ViewModels
 
         private async void LeftNode()
         {
-            MainViewModel.getInstance().VisualTree = new VisualTreeViewModel(this.father.Left);
+            int newDepth = System.Int32.Parse(this.DepthText2);
+            MainViewModel.getInstance().VisualTree = new VisualTreeViewModel(this.father.Left, newDepth);
             await Application.Current.MainPage.Navigation.PushAsync(new VisualTreePage());
         }
 
         private async void RightNode()
         {
-            MainViewModel.getInstance().VisualTree = new VisualTreeViewModel(this.father.Right);
+            int newDepth = System.Int32.Parse(this.DepthText2);
+            MainViewModel.getInstance().VisualTree = new VisualTreeViewModel(this.father.Right, newDepth);
             await Application.Current.MainPage.Navigation.PushAsync(new VisualTreePage());
         }
 

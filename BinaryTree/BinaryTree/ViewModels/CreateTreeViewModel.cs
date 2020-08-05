@@ -51,7 +51,7 @@ namespace BinaryTree.ViewModels
         {
             if (this.root != null)
             {
-                MainViewModel.getInstance().VisualTree = new VisualTreeViewModel(this.root);
+                MainViewModel.getInstance().VisualTree = new VisualTreeViewModel(this.root, 0);
                 await Application.Current.MainPage.Navigation.PushAsync(new VisualTreePage());
             }
             else

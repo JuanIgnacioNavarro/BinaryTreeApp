@@ -16,8 +16,8 @@
             <Style
                 ApplyToDerivedTypes="True"
                 TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="White"/>
-                <Setter Property="BarTextColor" Value="Black"/>
+                <Setter Property="BarBackgroundColor" Value="#000000"/>
+                <Setter Property="BarTextColor" Value="#FFFFFF"/>
 
             </Style>
         </ResourceDictionary>
