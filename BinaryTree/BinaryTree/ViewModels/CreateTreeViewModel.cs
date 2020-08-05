@@ -11,6 +11,7 @@ namespace BinaryTree.ViewModels
     {
 
         #region ATTRIBUTES
+        public static Node rootStatic;
 
         Node root;
 
@@ -55,7 +56,7 @@ namespace BinaryTree.ViewModels
             }
             else
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "There are no elements in the tree", "Ok");
+                await Application.Current.MainPage.DisplayAlert("No elements in the tree", "Add new elements in the button of the page", "Ok");
             }
 
         }
@@ -77,6 +78,7 @@ namespace BinaryTree.ViewModels
             if (this.root == null)
             {
                 this.root = new Node(nodeValue);
+                rootStatic = this.root;
             }
             else
             {

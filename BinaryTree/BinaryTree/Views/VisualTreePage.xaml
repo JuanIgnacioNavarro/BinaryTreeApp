@@ -136,6 +136,53 @@
 
             </Grid>
 
+            <Label
+                Text="Inorder:"
+                TextColor="Black"
+                VerticalOptions="EndAndExpand"
+                FontSize="Body"
+                BackgroundColor="Gray">
+            </Label>
+
+            <Label
+                Text="{Binding InOrderText}"
+                TextColor="Black"
+                VerticalOptions="EndAndExpand"
+                FontSize="Body"
+                BackgroundColor="Gray">
+            </Label>
+
+            <Label
+                Text="Preorder:"
+                TextColor="Black"
+                VerticalOptions="EndAndExpand"
+                FontSize="Body"
+                BackgroundColor="Gray">
+            </Label>
+
+            <Label
+                Text="{Binding PreOrderText}"
+                TextColor="Black"
+                VerticalOptions="EndAndExpand"
+                FontSize="Body"
+                BackgroundColor="Gray">
+            </Label>
+
+            <Label
+                Text="Postorder:"
+                TextColor="Black"
+                VerticalOptions="EndAndExpand"
+                FontSize="Body"
+                BackgroundColor="Gray">
+            </Label>
+
+            <Label
+                Text="{Binding PostOrderText}"
+                TextColor="Black"
+                VerticalOptions="EndAndExpand"
+                FontSize="Body"
+                BackgroundColor="Gray">
+            </Label>
 
 
         </StackLayout>

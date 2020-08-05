@@ -22,6 +22,12 @@ namespace BinaryTree.ViewModels
 
         private string rightNodeText;
 
+        private string inOrderText;
+
+        private string preOrderText;
+
+        private string postOrderText;
+
         //BOOLEAN
         private bool isVisibleLeft;
 
@@ -48,6 +54,24 @@ namespace BinaryTree.ViewModels
         {
             get { return this.rightNodeText; }
             set { SetValue(ref this.rightNodeText, value); }
+        }
+
+        public string InOrderText
+        {
+            get { return this.inOrderText; }
+            set { SetValue(ref this.inOrderText, value); }
+        }
+
+        public string PreOrderText 
+        {
+            get { return this.preOrderText; }
+            set { SetValue(ref this.preOrderText, value); }
+        }
+
+        public string PostOrderText 
+        {
+            get { return this.postOrderText; }
+            set { SetValue(ref this.postOrderText, value); }
         }
 
         //BOOLEAN
@@ -94,7 +118,10 @@ namespace BinaryTree.ViewModels
                 this.RightNodeText = this.father.Right.Value.ToString();
                 this.IsVisibleRight = true;
             }
-
+            
+            this.PrintInOrder(CreateTreeViewModel.rootStatic);
+            this.PrintPreOrder(CreateTreeViewModel.rootStatic);
+            this.PrintPostOrder(CreateTreeViewModel.rootStatic);
         }
 
         #region METHODS
@@ -111,6 +138,41 @@ namespace BinaryTree.ViewModels
             await Application.Current.MainPage.Navigation.PushAsync(new VisualTreePage());
         }
 
+        private void PrintInOrder(Node node)
+        {
+            if (node == null)
+                return;
+
+            PrintInOrder(node.Left);
+
+            this.InOrderText += node.Value + ", ";
+
+            PrintInOrder(node.Right);
+        }
+
+        private void PrintPreOrder(Node node)
+        {
+            if (node == null)
+                return;
+
+            this.PreOrderText += node.Value + ", ";
+
+            PrintPreOrder(node.Left);
+
+            PrintPreOrder(node.Right);
+        }
+
+        private void PrintPostOrder(Node node)
+        {
+            if (node == null)
+                return;
+
+            PrintPostOrder(node.Left);
+
+            PrintPostOrder(node.Right);
+
+            this.PostOrderText += node.Value + ", ";
+        }
         #endregion
     }
 }
