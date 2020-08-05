@@ -7,16 +7,26 @@
     Title="Tree">
     <ContentPage.Content>
         <StackLayout
-            BackgroundColor="White"
+            Padding="10"
+            BackgroundColor="#393748"
             BindingContext="{Binding VisualTree}">
+
+            <Label
+                Margin="15, 0"
+                Text="Depth"
+                TextColor="#FFFFFF"
+                FontSize="Medium"
+                FontAttributes="Bold"
+                HorizontalOptions="End">
+            </Label>
 
             <Grid
                 VerticalOptions="CenterAndExpand">
                 <Grid.ColumnDefinitions>
 
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="*"/>
 
                 </Grid.ColumnDefinitions>
@@ -136,68 +146,91 @@
                 </Frame>
 
                 <Label
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    TextColor="#FFFFFF"
+                    FontSize="Medium"
+                    FontAttributes="Bold"
                     Grid.Row="0"
                     Grid.Column="3"
-                    Text="{Binding DepthText1}"
-                    TextColor="Black">
+                    Text="{Binding DepthText1}">
                 </Label>
 
                 <Label
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    TextColor="#FFFFFF"
+                    FontSize="Medium"
+                    FontAttributes="Bold"
                     Grid.Row="2"
                     Grid.Column="3"
                     Text="{Binding DepthText2}"
-                    IsVisible="{Binding HasChildren}"
-                    TextColor="Black">
+                    IsVisible="{Binding HasChildren}">
                 </Label>
 
             </Grid>
 
             <Label
-                Text="Inorder:"
-                TextColor="Black"
-                VerticalOptions="EndAndExpand"
-                FontSize="Body"
-                BackgroundColor="Gray">
+                HorizontalOptions="Center"
+                TextColor="#0F084D"
+                FontAttributes="Bold"
+                FontSize="Large"
+                Margin="60, 0"
+                Text="Inorder"
+                VerticalOptions="EndAndExpand">
             </Label>
 
             <Label
+                Margin="20, 0"
                 Text="{Binding InOrderText}"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
                 TextColor="Black"
                 VerticalOptions="EndAndExpand"
                 FontSize="Body"
-                BackgroundColor="Gray">
+                BackgroundColor="#393BB3">
             </Label>
 
             <Label
-                Text="Preorder:"
-                TextColor="Black"
-                VerticalOptions="EndAndExpand"
-                FontSize="Body"
-                BackgroundColor="Gray">
+                HorizontalOptions="Center"
+                TextColor="#0F084D"
+                FontAttributes="Bold"
+                FontSize="Large"
+                Margin="60, 0"
+                Text="Preorder"
+                VerticalOptions="EndAndExpand">
             </Label>
 
             <Label
+                Margin="20, 0"
                 Text="{Binding PreOrderText}"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
                 TextColor="Black"
                 VerticalOptions="EndAndExpand"
                 FontSize="Body"
-                BackgroundColor="Gray">
+                BackgroundColor="#393BB3">
             </Label>
 
             <Label
-                Text="Postorder:"
-                TextColor="Black"
-                VerticalOptions="EndAndExpand"
-                FontSize="Body"
-                BackgroundColor="Gray">
+                HorizontalOptions="Center"
+                TextColor="#0F084D"
+                FontAttributes="Bold"
+                FontSize="Large"
+                Margin="60, 0"
+                Text="Postorder"
+                VerticalOptions="EndAndExpand">
             </Label>
 
             <Label
+                Margin="20, 0"
                 Text="{Binding PostOrderText}"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
                 TextColor="Black"
                 VerticalOptions="EndAndExpand"
                 FontSize="Body"
-                BackgroundColor="Gray">
+                BackgroundColor="#393BB3">
             </Label>
 
 
